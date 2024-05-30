@@ -214,10 +214,6 @@ def extract():
     df_postDim.to_csv('postDim_data.csv', index=False)
 
     print("Finished extract")
-    
-    # return df_user, df_audio, df_date, df_postFacts, df_postDim
-    # return user_data, audio_data, date_data, postFacts_data, postDim_data
-
 
 def load():
     import os
@@ -236,7 +232,6 @@ def load():
         )
         conn.execute(upsert_statement)
 
-
     df_user = pd.read_csv('user_data.csv')
     df_audio = pd.read_csv('audio_data.csv')
     df_date = pd.read_csv('date_data.csv')
@@ -246,7 +241,6 @@ def load():
     # Database connection details
     DATABASE_TYPE = 'postgresql'
     DBAPI = 'psycopg2'
-    # ENDPOINT = 'tiktok-dataset.cty66giwyfiz.us-east-2.rds.amazonaws.com'  # replace with your endpoint
     ENDPOINT = ''  # replace with your endpoint
     USER = ''  # replace with your username
     PASSWORD = ''  # replace with your password
@@ -282,7 +276,6 @@ def load():
     os.remove('postDim_data.csv')
 
     print("Finished load")
-
 
 with DAG(
     "tiktok_dag",
